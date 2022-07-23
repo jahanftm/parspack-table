@@ -3,26 +3,29 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {TableComponent} from './table/table.component';
+import {TableComponent} from './table/table-component/table.component';
 import {NzTableModule} from "ng-zorro-antd/table";
 import {HttpClientModule} from "@angular/common/http";
-import { ButtonComponent } from './button/button.component';
-import { MapModalComponent } from './map-modal/map-modal.component';
-import {NzModalModule} from "ng-zorro-antd/modal";
+import { ButtonComponent } from './table/button/button.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {TableModule} from "./table/table.module";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
     ButtonComponent,
-    MapModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NzTableModule,
     HttpClientModule,
-    NzModalModule
+    TableModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

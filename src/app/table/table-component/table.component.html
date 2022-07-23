@@ -1,0 +1,71 @@
+<mat-spinner *ngIf="nameList.length === 0"></mat-spinner>
+<section *ngIf="nameList.length > 0">
+  <nz-table
+    #basicTable
+    #sortTable
+    [nzData]="dataSet"
+    nzTableLayout="fixed"
+    [(nzPageIndex)]="pageIndex"
+    [(nzPageSize)]="pageSize"
+
+  >
+    <thead>
+    <tr>
+      <th>id</th>
+      <th nzColumnKey="name"
+          [nzSortFn]="sortNames"
+          [nzFilterMultiple]="true"
+          nzShowFilter
+          [nzFilters]="nameList"
+          [nzFilterFn]="filterName">name
+      </th>
+      <th>username</th>
+      <th nzColumnKey="email"
+          [nzSortFn]="sortEmail"
+          [nzFilterMultiple]="true"
+          nzShowFilter
+          [nzFilters]="emailList"
+          [nzFilterFn]="filterEmail"
+      >email
+      </th>
+      <th nzColumnKey="phone"
+          [nzSortFn]="sortPhone"
+          [nzFilterMultiple]="true"
+          nzShowFilter
+          [nzFilters]="phoneList"
+          [nzFilterFn]="filterPhone">phone</th>
+      <th>address</th>
+      <th nzColumnKey="zipcode"
+          [nzSortFn]="sortZipcode"
+          [nzFilterMultiple]="true"
+          nzShowFilter
+          [nzFilters]="zipcodeList"
+          [nzFilterFn]="filterZipcode"
+      >zipcode
+      </th>
+      <th>website</th>
+      <th>company</th>
+      <th>operation</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{data.id}}</td>
+      <td>{{data.name}}</td>
+      <td>{{data.username}}</td>
+      <td>{{data.email}}</td>
+      <td>{{data.phone}}</td>
+      <td>{{data.address.city + ',' + data.address.street + ',' + data.address.suite}}
+      <td>{{data.address.zipcode}}</td>
+      <td>{{data.website}}</td>
+      <td>{{data.company.name}}</td>
+      <td>
+        <app-button (click)="openDialog(data.address)">view
+        </app-button>
+
+      </td>
+    </tr>
+    </tbody>
+  </nz-table>
+</section>
+
