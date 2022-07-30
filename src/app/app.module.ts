@@ -10,6 +10,7 @@ import { ButtonComponent } from './table/button/button.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {TableModule} from "./table/table.module";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     TableModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
+    FormsModule,
 
   ],
   providers: [],

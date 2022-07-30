@@ -4,6 +4,7 @@ import { TableRoutingModule } from './table-routing.module';
 import {NzTableModule} from "ng-zorro-antd/table";
 import {MapModalComponent} from "./map-modal/map-modal.component";
 import {MatDialogModule} from "@angular/material/dialog";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -14,6 +15,7 @@ import {MatDialogModule} from "@angular/material/dialog";
     TableRoutingModule,
     NzTableModule,
     MatDialogModule,
+    FormsModule,
   ],
   entryComponents: [
     // MapModalComponent

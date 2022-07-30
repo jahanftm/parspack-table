@@ -1,5 +1,11 @@
 <mat-spinner *ngIf="nameList.length === 0"></mat-spinner>
 <section *ngIf="nameList.length > 0">
+
+  <input type="search"
+         class="search"
+         [ngModel]="keyword"
+         (ngModelChange)="keywordChanged($event)">
+
   <nz-table
     #basicTable
     #sortTable

@@ -14,6 +14,8 @@ export class TableComponent implements OnInit {
 
   dataSet: UserInfo[] | [] = [];
 
+  userinfo: UserInfo[] | [] = [];
+
   nameList: ListModel[] = [];
 
   emailList: ListModel[] = [];
@@ -28,6 +30,10 @@ export class TableComponent implements OnInit {
 
   pageSize = 5;
 
+  keyword = '';
+
+  filterTimeout = null;
+
   constructor(
     private tableService: TableService,
     public dialog: MatDialog
@@ -38,6 +44,7 @@ export class TableComponent implements OnInit {
     this.spinner = true;
     this.tableService.getTableInfo().subscribe(data => {
         this.dataSet = data;
+        this.userinfo = data;
         this.spinner = false;
         this.dataSet.forEach(x => {
           this.nameList.push({text: x.name, value: x.name, checked: false});
@@ -73,4 +80,22 @@ export class TableComponent implements OnInit {
   filterZipcode = (list: number[], item: UserInfo) => list.some(zipcode => item.address.zipcode.indexOf(String(zipcode)) !== -1);
   filterPhone = (list: string[], item: UserInfo) => list.some(phone => item.phone.indexOf(phone) !== -1);
 
+
+  keywordChanged(value: any) {
+    this.keyword = value;
+
+    let data = []
+    let list: any[] = [...this.userinfo];
+
+    const regEx = new RegExp(this.keyword);
+
+    data = list.filter((x: any) => {
+      const fieldsToSearch = ['name', 'email'];
+      return fieldsToSearch.some((field: any) => {
+        const value = x[field];
+        return regEx.test(value);
+      });
+    });
+    this.dataSet = data;
+  }
 }
