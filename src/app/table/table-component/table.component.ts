@@ -90,9 +90,9 @@ export class TableComponent implements OnInit {
     const regEx = new RegExp(this.keyword);
 
     data = list.filter((x: any) => {
-      const fieldsToSearch = ['name', 'email'];
-      return fieldsToSearch.some((field: any) => {
-        const value = x[field];
+      const fields = ['name', 'email', 'phone'];
+      return fields.some((field: any) => {
+        const value = x[field].toLowerCase();
         return regEx.test(value);
       });
     });
